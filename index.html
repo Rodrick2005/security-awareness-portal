@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Awareness Portal</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#061832;
+  --blue:#0d6efd;
+  --cyan:#00c8ff;
+  --soft:#edf4ff;
+  --text:#122033;
+  --muted:#65738a;
+  --danger:#e63946;
+  --success:#16a34a;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:#f4f7fb;
+  color:var(--text);
+  scroll-behavior:smooth;
+}
+
+.navbar{
+  background:#061832;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+
+.navbar-brand{
+  font-weight:800;
+}
+
+.nav-link{
+  color:#dce9ff!important;
+  font-size:.9rem;
+  margin-left:10px;
+}
+
+.nav-link:hover{
+  color:#ffffff!important;
+}
+
+.btn-main{
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  color:white;
+  border:0;
+  border-radius:10px;
+  padding:12px 22px;
+  font-weight:700;
+  box-shadow:0 12px 25px rgba(13,110,253,.25);
+}
+
+.btn-main:hover{
+  color:white;
+  transform:translateY(-2px);
+}
+
+.btn-outline-light{
+  border-radius:10px;
+  padding:12px 22px;
+  font-weight:700;
+}
+
+.section{
+  min-height:100vh;
+  padding:110px 0;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero{
+  background:
+    linear-gradient(90deg,rgba(2,12,30,.95),rgba(2,25,60,.75)),
+    url("https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+  color:white;
+}
+
+.phishing-bg{
+  background:
+    linear-gradient(rgba(244,247,251,.96),rgba(244,247,251,.96)),
+    url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+}
+
+.reporting-bg{
+  background:
+    linear-gradient(135deg,rgba(3,16,40,.94),rgba(9,40,90,.9)),
+    url("https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+  color:white;
+}
+
+.password-bg{
+  background:
+    linear-gradient(rgba(255,255,255,.95),rgba(255,255,255,.95)),
+    url("https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+}
+
+.threats-bg{
+  background:
+    linear-gradient(135deg,rgba(245,248,255,.96),rgba(234,242,255,.97)),
+    url("https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+}
+
+.about-bg{
+  background:#061832;
+  color:white;
+}
+
+.hero h1{
+  font-size:clamp(2.5rem,5vw,4.8rem);
+  font-weight:900;
+  line-height:1.05;
+}
+
+.hero p{
+  color:#d9e8ff;
+  max-width:620px;
+}
+
+.hero-card{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:26px;
+  padding:35px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 30px 70px rgba(0,0,0,.3);
+  animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
+}
+
+.section-title{
+  font-weight:900;
+  text-align:center;
+  margin-bottom:12px;
+}
+
+.section-subtitle{
+  text-align:center;
+  color:var(--muted);
+  max-width:760px;
+  margin:0 auto 55px;
+}
+
+.text-light-soft{
+  color:#d9e8ff;
+}
+
+.stat-card{
+  background:hwb(240 95% 4%);
+  border-radius:18px;
+  padding:25px;
+  box-shadow:0 18px 40px rgba(10, 35, 80, 0);
+  border:1px solid #e6eef8;
+  transform:translateY(0);
+  transition:.35s;
+}.stat-card p{
+  color:rgb(14, 14, 14);
+  font: size 12rem;
+  margin-top:6px;
+}
+.stat-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 25px 55px rgba(10,35,80,.18);
+}
+
+.stat-card i{
+  font-size:2rem;
+  color:var(--blue);
+}
+
+.stat-card h3{
+  font-weight:900;
+  color:var(--blue);
+}
+
+.card-pro{
+  background:rgb(251, 249, 249);
+  border-radius:22px;
+  padding:30px;
+  border:1px solid #e6eef8;
+  box-shadow:0 20px 45px rgba(10,35,80,.1);
+  transition:.35s;
+  height:100%;
+  color: black; /* Set text color to black for the entire card */
+}
+
+.card-pro:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 65px rgba(10,35,80,.18);
+}
+
+.email-box{
+  background:white;
+  border:1px solid #dbe7f7;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 22px 55px rgba(0,0,0,.12);
+}
+
+.email-header{
+  background:#eef5ff;
+  padding:18px 22px;
+  border-bottom:1px solid #dbe7f7;
+}
+
+.email-body{
+  padding:25px;
+  line-height:1.8;
+}
+
+.mark-red{
+  border:2px solid #ff6b75;
+  background:#fff1f2;
+  color:#9b1c25;
+  border-radius:8px;
+  padding:2px 8px;
+  font-weight:800;
+}
+
+.annotation{
+  background:white;
+  border-left:5px solid var(--danger);
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:14px;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+
+.annotation strong{
+  color:var(--danger);
+}
+
+.check-list li{
+  list-style:none;
+  margin-bottom:12px;
+  position:relative;
+  padding-left:34px;
+}
+
+.check-list li::before{
+  content:"\F633";
+  font-family:bootstrap-icons;
+  position:absolute;
+  left:0;
+  color:var(--danger);
+}
+
+.flow-wrap{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:24px;
+}
+
+.flow-wrap::before{
+  content:"";
+  position:absolute;
+  top:44px;
+  left:8%;
+  width:84%;
+  height:4px;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
+  border-radius:10px;
+  animation:growLine 2.6s ease forwards;
+  transform-origin:left;
+}
+
+@keyframes growLine{
+  from{transform:scaleX(0)}
+  to{transform:scaleX(1)}
+}
+
+.flow-step{
+  text-align:center;
+  position:relative;
+  z-index:2;
+  animation:rise .8s ease both;
+}
+
+.flow-step:nth-child(1){animation-delay:.2s}
+.flow-step:nth-child(2){animation-delay:.4s}
+.flow-step:nth-child(3){animation-delay:.6s}
+.flow-step:nth-child(4){animation-delay:.8s}
+.flow-step:nth-child(5){animation-delay:1s}
+
+@keyframes rise{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.step-circle{
+  width:88px;
+  height:88px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 22px;
+  font-size:2.1rem;
+  box-shadow:0 0 0 rgba(0,200,255,.6);
+  animation:pulse 2.4s infinite;
+}
+
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(0,200,255,.55)}
+  70%{box-shadow:0 0 0 22px rgba(0,200,255,0)}
+  100%{box-shadow:0 0 0 0 rgba(0,200,255,0)}
+}
+
+.flow-card{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:20px;
+  padding:22px;
+  min-height:210px;
+  backdrop-filter:blur(12px);
+  transition:.3s;
+}
+
+.flow-card:hover{
+  transform:translateY(-8px) scale(1.02);
+  background:rgba(255,255,255,.13);
+}
+
+.password-example{
+  border-radius:16px;
+  padding:18px;
+  background:#f4f8ff;
+  border:1px solid #dce9fb;
+}
+
+.weak{
+  color:#dc3545;
+  font-weight:900;
+}
+
+.strong{
+  color:#16a34a;
+  font-weight:900;
+}
+
+.blog-img{
+  min-height:420px;
+  border-radius:22px;
+  background:
+    linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.25)),
+    url("https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=900&q=80") center/cover no-repeat;
+}
+
+.recent-post{
+  display:flex;
+  gap:12px;
+  border-bottom:1px solid #e5edf7;
+  padding:14px 0;
+}
+
+.recent-post i{
+  color:var(--blue);
+  font-size:1.5rem;
+}
+
+.fade-in{
+  opacity:0;
+  transform:translateY(45px);
+  transition:1s ease;
+}
+
+.fade-in.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.quiz-option{
+  display:block;
+  width:100%;
+  text-align:left;
+  border:1px solid #dce7f8;
+  background:white;
+  border-radius:14px;
+  padding:14px 16px;
+  margin:10px 0;
+  transition:.25s;
+}
+
+.quiz-option:hover{
+  background:#eef5ff;
+  transform:translateX(6px);
+}
+
+#chatButton{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  color:white;
+  border:0;
+  box-shadow:0 20px 45px rgba(13,110,253,.35);
+  z-index:999;
+  font-size:1.6rem;
+  animation:chatPulse 2.2s infinite;
+}
+
+@keyframes chatPulse{
+  0%{box-shadow:0 0 0 0 rgba(13,110,253,.5)}
+  70%{box-shadow:0 0 0 18px rgba(13,110,253,0)}
+}
+
+#chatBox{
+  position:fixed;
+  right:22px;
+  bottom:98px;
+  width:360px;
+  max-width:calc(100vw - 44px);
+  background:white;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.28);
+  z-index:999;
+  display:none;
+}
+
+.chat-head{
+  background:#061832;
+  color:white;
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.chat-body{
+  height:330px;
+  overflow-y:auto;
+  padding:18px;
+  background:#f4f7fb;
+}
+
+.msg{
+  padding:12px 14px;
+  border-radius:16px;
+  margin-bottom:12px;
+  max-width:88%;
+  font-size:.92rem;
+}
+
+.bot{
+  background:white;
+  color:#122033;
+  border:1px solid #e1e9f5;
+}
+
+.user{
+  background:var(--blue);
+  color:white;
+  margin-left:auto;
+}
+
+.quick-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  padding:10px 14px;
+  background:#eef5ff;
+}
+
+.quick-buttons button{
+  border:0;
+  background:white;
+  color:#0d6efd;
+  border-radius:999px;
+  padding:7px 12px;
+  font-size:.82rem;
+  font-weight:700;
+}
+
+.chat-input{
+  display:flex;
+  border-top:1px solid #e2e8f0;
+}
+
+.chat-input input{
+  flex:1;
+  border:0;
+  padding:15px;
+  outline:none;
+}
+
+.chat-input button{
+  border:0;
+  background:var(--blue);
+  color:white;
+  padding:0 18px;
+}
+
+footer{
+  background:#061832;
+  color:#d9e8ff;
+  padding:30px;
+  text-align:center;
+}
+
+@media(max-width:992px){
+  .flow-wrap{
+    grid-template-columns:1fr;
+  }
+  .flow-wrap::before{
+    display:none;
+  }
+  .section{
+    min-height:auto;
+    padding:90px 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#home">
+      <i class="bi bi-shield-lock-fill me-2"></i>Security Awareness Portal
+    </a>
+
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="nav" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li><a class="nav-link" href="#home">Home</a></li>
+        <li><a class="nav-link" href="#phishing">Phishing Guide</a></li>
+        <li><a class="nav-link" href="#reporting">Reporting Protocol</a></li>
+        <li><a class="nav-link" href="#passwords">Password Security</a></li>
+        <li><a class="nav-link" href="#threats">Current Threats</a></li>
+        <li><a class="nav-link" href="#about">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section id="home" class="section hero d-flex align-items-center">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 fade-in">
+        <h1>Security Awareness Starts With You.</h1>
+        <p class="lead mt-4">
+          Learn how to identify, avoid, and report cyber threats.
+        </p>
+        <p>
+          Small actions today prevent big problems tomorrow. This portal trains users to spot phishing emails,
+          protect passwords, report attacks, and stay aware of modern social engineering threats.
+        </p>
+
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="#phishing" class="btn btn-main">Learn Phishing <i class="bi bi-arrow-right ms-2"></i></a>
+          <a href="#reporting" class="btn btn-outline-light">Report an Attack <i class="bi bi-shield-check ms-2"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-6 fade-in">
+        <div class="hero-card text-center">
+          <i class="bi bi-shield-lock" style="font-size:9rem;color:#67c7ff;"></i>
+          <h3 class="mt-3">Think Before You Click</h3>
+          <p class="mx-auto">Cybersecurity begins with awareness, caution, and fast reporting.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-5 fade-in">
+      <div class="col-md-3">
+        <div class="stat-card">
+          <i class="bi bi-envelope-exclamation"></i>
+          <h3>90%</h3>
+          <p>of cyber attacks start with phishing emails.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stat-card">
+          <i class="bi bi-people-fill"></i>
+          <h3>3.4B</h3>
+          <p>spam emails are sent globally every day.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stat-card">
+          <i class="bi bi-exclamation-triangle-fill"></i>
+          <h3>60%</h3>
+          <p>of users struggle to identify phishing attempts.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stat-card">
+          <i class="bi bi-cursor-fill"></i>
+          <h3>1 Click</h3>
+          <p>can expose passwords, files, and sensitive data.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="phishing" class="section phishing-bg">
+  <div class="container">
+    <div class="fade-in">
+      <h2 class="section-title">The Anatomy of a Phishing Email</h2>
+      <p class="section-subtitle">
+        Phishing emails trick users into clicking malicious links, opening dangerous attachments, or giving away private information.
+      </p>
+    </div>
+
+    <div class="row g-4 align-items-start">
+      <div class="col-lg-7 fade-in">
+        <div class="email-box">
+          <div class="email-header">
+            <p class="mb-2"><strong>From:</strong> <span class="mark-red">support@paypa1-security.com</span></p>
+            <p class="mb-0"><strong>Subject:</strong> <span class="mark-red">URGENT: Verify Your Account Now</span></p>
+          </div>
+
+          <div class="email-body">
+            <p>Dear Customer,</p>
+            <p>
+              We detected unusual activity on your account. For your security, verify your account immediately.
+            </p>
+            <p>
+              <strong>Secure verification link:</strong><br>
+              <span class="mark-red">http://paypal-login-security-check.com</span>
+            </p>
+            <p>
+              If you do not verify within 24 hours, your account will be suspended.
+            </p>
+            <p>
+              Thank you,<br>
+              <span class="mark-red">PayPal Securrity Teamm</span>
+            </p>
+            <p>
+              <span class="mark-red"><i class="bi bi-paperclip"></i> Attachment: Account_Verification_Form.zip</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5 fade-in">
+        <div class="annotation">
+          <strong>1. Fake Sender Address</strong>
+          <p class="mb-0">The domain looks similar to PayPal but contains suspicious spelling.</p>
+        </div>
+        <div class="annotation">
+          <strong>2. Urgent Subject Line</strong>
+          <p class="mb-0">Attackers create panic so users act without thinking.</p>
+        </div>
+        <div class="annotation">
+          <strong>3. Suspicious Link</strong>
+          <p class="mb-0">The link does not match the official website.</p>
+        </div>
+        <div class="annotation">
+          <strong>4. Spelling Mistakes</strong>
+          <p class="mb-0">Poor grammar and misspelled words are common warning signs.</p>
+        </div>
+        <div class="annotation">
+          <strong>5. Unexpected Attachment</strong>
+          <p class="mb-0">Dangerous files may install malware or steal data.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5 g-4">
+      <div class="col-lg-7 fade-in">
+        <div class="card-pro">
+          <h4>Red Flags Checklist</h4>
+          <ul class="check-list mt-3">
+            <li>Unknown or fake sender address</li>
+            <li>Urgent or threatening language</li>
+            <li>Suspicious links or shortened URLs</li>
+            <li>Spelling and grammar errors</li>
+            <li>Unexpected attachments</li>
+            <li>Requests for passwords or personal information</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-5 fade-in">
+        <div class="card-pro">
+          <h4>Short Quiz</h4>
+          <p>Which option is the strongest phishing warning sign?</p>
+
+          <button class="quiz-option" onclick="quiz(false)">The email says “Dear Customer.”</button>
+          <button class="quiz-option" onclick="quiz(true)">The email has a fake sender, urgent message, suspicious link, errors, and attachment.</button>
+          <button class="quiz-option" onclick="quiz(false)">The email arrived in the morning.</button>
+
+          <p id="quizResult" class="fw-bold mt-3"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reporting" class="section reporting-bg">
+  <div class="container">
+    <div class="fade-in">
+      <h2 class="section-title">Reporting Protocol</h2>
+      <p class="section-subtitle text-light-soft">
+        If you receive a suspicious email, follow this step-by-step process immediately.
+      </p>
+    </div>
+
+    <div class="flow-wrap fade-in">
+      <div class="flow-step">
+        <div class="step-circle"><i class="bi bi-x-octagon"></i></div>
+        <div class="flow-card">
+          <h5>Do NOT Click</h5>
+          <p class="text-light-soft">Do not click links, buttons, or attachments in the suspicious email.</p>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-circle"><i class="bi bi-reply-fill"></i></div>
+        <div class="flow-card">
+          <h5>Do NOT Reply</h5>
+          <p class="text-light-soft">Replying confirms your account is active to attackers.</p>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-circle"><i class="bi bi-camera-fill"></i></div>
+        <div class="flow-card">
+          <h5>Take Screenshot</h5>
+          <p class="text-light-soft">Capture evidence before deleting or reporting the message.</p>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-circle"><i class="bi bi-shield-check"></i></div>
+        <div class="flow-card">
+          <h5>Report to IT</h5>
+          <p class="text-light-soft">Send it to the IT or Security team using the official channel.</p>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-circle"><i class="bi bi-trash3-fill"></i></div>
+        <div class="flow-card">
+          <h5>Delete Email</h5>
+          <p class="text-light-soft">Delete it after reporting so nobody opens it later.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-pro mt-5 fade-in show">
+      <h4><i class="bi bi-info-circle me-2"></i>Where to Report</h4>
+      <p>Email: <strong>security@yourcompany.com</strong></p>
+      <p>Phone: <strong>(555) 123-4567</strong></p>
+      <p class="mb-0">Portal: <strong>security.yourcompany.com/report</strong></p>
+    </div>
+  </div>
+</section>
+
+<section id="passwords" class="section password-bg">
+  <div class="container">
+    <div class="fade-in">
+      <h2 class="section-title">Password Hygiene</h2>
+      <p class="section-subtitle">
+        Strong passwords and MFA protect your accounts even when attackers try to steal login details.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4 fade-in">
+        <div class="card-pro">
+          <h4>What is a Strong Password?</h4>
+          <p>A strong password is long, unique, and difficult to guess.</p>
+
+          <div class="password-example">
+            <p><span class="weak">Weak:</span> password123</p>
+            <p class="mb-0"><span class="strong">Strong:</span> BlueTiger!Cloud#92</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 fade-in">
+        <div class="card-pro">
+          <h4>Length &gt; Complexity</h4>
+          <ul class="check-list mt-3">
+            <li>Use 12 or more characters</li>
+            <li>Use phrases that are easy to remember</li>
+            <li>Avoid personal information</li>
+            <li>Do not reuse passwords</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 fade-in">
+        <div class="card-pro">
+          <h4>What is MFA?</h4>
+          <p>
+            Multi-Factor Authentication adds another layer of security, such as a phone code,
+            fingerprint, or authenticator app.
+          </p>
+          <p><strong>Why it matters:</strong> even if your password is stolen, MFA can stop attackers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-4 fade-in">
+      <div class="col-md-3"><div class="card-pro text-center"><i class="bi bi-lock fs-1 text-primary"></i><p class="mt-3">Use unique passwords</p></div></div>
+      <div class="col-md-3"><div class="card-pro text-center"><i class="bi bi-person-x fs-1 text-primary"></i><p class="mt-3">Avoid personal info</p></div></div>
+      <div class="col-md-3"><div class="card-pro text-center"><i class="bi bi-arrow-clockwise fs-1 text-primary"></i><p class="mt-3">Update passwords</p></div></div>
+      <div class="col-md-3"><div class="card-pro text-center"><i class="bi bi-key fs-1 text-primary"></i><p class="mt-3">Use password managers</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="threats" class="section threats-bg">
+  <div class="container">
+    <div class="fade-in">
+      <h2 class="section-title">Current Threats & Trends</h2>
+      <p class="section-subtitle">
+        Social engineering attacks continue to evolve. Users must stay informed to avoid modern scams.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-5 fade-in">
+        <div class="blog-img"></div>
+      </div>
+
+      <div class="col-lg-4 fade-in">
+        <div class="card-pro">
+          <span class="badge bg-primary mb-3">Featured Article</span>
+          <h4>Fake Bank Login Pages Target Customers</h4>
+
+          <h6 class="mt-4">What happened</h6>
+          <p>Attackers sent realistic fake banking emails asking customers to verify their accounts.</p>
+
+          <h6>How it worked</h6>
+          <ul>
+            <li>User receives urgent email</li>
+            <li>User clicks fake link</li>
+            <li>Fake login page steals credentials</li>
+          </ul>
+
+          <h6>Lessons learned</h6>
+          <p>Verify links, avoid urgency pressure, and report suspicious messages quickly.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 fade-in">
+        <div class="card-pro">
+          <h5>Recent Posts</h5>
+
+          <div class="recent-post">
+            <i class="bi bi-envelope-exclamation"></i>
+            <div>
+              <strong>Email scams in companies</strong>
+              <p class="mb-0 small text-muted">Fake HR and payroll emails</p>
+            </div>
+          </div>
+
+          <div class="recent-post">
+            <i class="bi bi-qr-code"></i>
+            <div>
+              <strong>QR code phishing</strong>
+              <p class="mb-0 small text-muted">Fake QR links to login pages</p>
+            </div>
+          </div>
+
+          <div class="recent-post">
+            <i class="bi bi-person-bounding-box"></i>
+            <div>
+              <strong>Social engineering</strong>
+              <p class="mb-0 small text-muted">Attackers manipulate trust</p>
+            </div>
+          </div>
+
+          <a href="#phishing" class="btn btn-main w-100 mt-4">Review Safety Tips</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section about-bg">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 fade-in">
+        <h2 class="fw-bold">About This Portal</h2>
+        <p class="text-light-soft">
+          This website is designed to educate users on phishing detection, reporting protocols,
+          password hygiene, and current social engineering threats.
+        </p>
+        <p class="text-light-soft">
+          It includes interactive learning, a quiz, animated reporting steps, and a smart assistant
+          to help users understand cybersecurity concepts quickly.
+        </p>
+      </div>
+
+      <div class="col-lg-6 fade-in">
+        <div class="hero-card">
+          <h4>Key Features</h4>
+          <ul class="mt-3">
+            <li>Interactive phishing email guide</li>
+            <li>Step-by-step reporting protocol</li>
+            <li>Password and MFA education</li>
+            <li>Threat trends blog section</li>
+            <li>Smart chatbot assistant</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="mb-0">© 2026 Security Awareness Portal | Cybersecurity Awareness Project</p>
+</footer>
+
+<button id="chatButton" onclick="toggleChat()">
+  <i class="bi bi-robot"></i>
+</button>
+
+<div id="chatBox">
+  <div class="chat-head">
+    <div>
+      <strong>Security Assistant</strong><br>
+      <small>Ask about phishing, passwords, MFA, reporting, threats</small>
+    </div>
+    <button onclick="toggleChat()" class="btn btn-sm btn-light">×</button>
+  </div>
+
+  <div class="quick-buttons">
+    <button onclick="quickAsk('What is phishing?')">Phishing</button>
+    <button onclick="quickAsk('How do I report an attack?')">Report</button>
+    <button onclick="quickAsk('What is MFA?')">MFA</button>
+    <button onclick="quickAsk('Give me password tips')">Password Tips</button>
+  </div>
+
+  <div id="chatBody" class="chat-body">
+    <div class="msg bot">
+      Hello! I am your Security Assistant. Ask me about phishing, reporting, passwords, MFA, or current threats.
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input id="chatInput" placeholder="Type your question...">
+    <button onclick="sendMessage()"><i class="bi bi-send-fill"></i></button>
+  </div>
+</div>
+
+<script>
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{threshold:.15});
+
+document.querySelectorAll(".fade-in").forEach(el=>observer.observe(el));
+
+function quiz(correct){
+  const result=document.getElementById("quizResult");
+  if(correct){
+    result.innerHTML="Correct. Multiple red flags together are the strongest phishing warning.";
+    result.style.color="#16a34a";
+  }else{
+    result.innerHTML="Incorrect. Look for fake sender, urgent language, suspicious link, errors, and attachments.";
+    result.style.color="#dc3545";
+  }
+}
+
+function toggleChat(){
+  const box=document.getElementById("chatBox");
+  box.style.display = box.style.display==="block" ? "none" : "block";
+}
+
+function quickAsk(text){
+  document.getElementById("chatInput").value=text;
+  sendMessage();
+}
+
+function addMessage(text,type){
+  const body=document.getElementById("chatBody");
+  const div=document.createElement("div");
+  div.className="msg "+type;
+  div.innerHTML=text;
+  body.appendChild(div);
+  body.scrollTop=body.scrollHeight;
+}
+
+function smartBot(input){
+  let q=input.toLowerCase();
+
+  if(q.includes("phishing") || q.includes("fake email")){
+    return "Phishing is a fake message designed to steal information. Check the sender address, links, urgency, grammar, and attachments before clicking.";
+  }
+
+  if(q.includes("sender") || q.includes("email address")){
+    return "Check the full sender address carefully. Attackers often replace letters with numbers, like paypa1 instead of paypal.";
+  }
+
+  if(q.includes("link") || q.includes("url")){
+    return "Before clicking, hover over the link and check if the real URL matches the official website. Avoid shortened or strange links.";
+  }
+
+  if(q.includes("attachment") || q.includes("zip") || q.includes("file")){
+    return "Unexpected attachments can contain malware. Do not open files you were not expecting, especially .zip, .exe, or suspicious documents.";
+  }
+
+  if(q.includes("report") || q.includes("attack") || q.includes("suspicious")){
+    return "Reporting steps: do not click, do not reply, take a screenshot, report to IT or Security team, then delete the email.";
+  }
+
+  if(q.includes("password") || q.includes("passphrase")){
+    return "Use long, unique passwords. A strong example is BlueTiger!Cloud#92. Avoid password reuse and use a password manager.";
+  }
+
+  if(q.includes("mfa") || q.includes("multi-factor") || q.includes("authentication")){
+    return "MFA means Multi-Factor Authentication. It adds another verification step, such as a phone code or authenticator app, to protect your account.";
+  }
+
+  if(q.includes("threat") || q.includes("trend") || q.includes("bank")){
+    return "Current threats include fake bank login pages, QR code phishing, fake company emails, and social engineering scams.";
+  }
+
+  if(q.includes("quiz") || q.includes("test")){
+    return "Go to the Phishing Guide section and answer the short quiz. It helps test whether you can identify phishing warning signs.";
+  }
+
+  if(q.includes("hello") || q.includes("hi")){
+    return "Hello! Ask me about phishing, passwords, MFA, reporting attacks, or current cyber threats.";
+  }
+
+  return "I can help with phishing, suspicious links, attachments, reporting protocol, password security, MFA, and current threats. Try asking: 'How do I report phishing?'";
+}
+
+function sendMessage(){
+  const input=document.getElementById("chatInput");
+  const text=input.value.trim();
+  if(!text) return;
+
+  addMessage(text,"user");
+  input.value="";
+
+  setTimeout(()=>{
+    addMessage(smartBot(text),"bot");
+  },450);
+}
+
+document.getElementById("chatInput").addEventListener("keypress",function(e){
+  if(e.key==="Enter") sendMessage();
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
